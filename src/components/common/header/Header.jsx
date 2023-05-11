@@ -8,8 +8,8 @@ const Header = () => {
     return (
         <div>
             <div>{t("header.message")}</div>
-            <button onClick={() => handleChangeLanguage('en') }> EN</button>
-            <button onClick={() => handleChangeLanguage('ar') }> AR</button>
+            <button onClick={() => handleChangeLanguage('en') } className="btn btn-sm btn-info my-3"> EN</button>
+            <button onClick={() => handleChangeLanguage('ar') } className="btn btn-sm btn-info my-3"> AR</button>
         </div> 
     )
 }
