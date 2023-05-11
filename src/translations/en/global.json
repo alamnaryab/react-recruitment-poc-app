@@ -1,4 +1,23 @@
 {
+  "main":{
+    "app_name":"Recruitment System",
+    "company_name":"NECMA"
+  },
+  "login":{
+    "login_message":"Please register your account to get shortlisted for current and upcoming vacancies at Company name",
+    "email":"Email",
+    "password":"Password",
+    "login":"Login",
+    "register_now":"Don't have account? Register Now"
+  },
+  "register":{
+    "register_message":"Please register your account to get shortlisted for current and upcoming vacancies at Company name",
+    "email":"Email",
+    "password":"Password",
+    "confirm_password":"Confirm password",
+    "register":"Register",
+    "have_account":"Already have account? Login Now"
+  },
   "header": {
     "message": "Welcome to recruitment system"
   },
