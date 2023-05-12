@@ -1,11 +1,11 @@
 import '../../../assets/bootstrap.css';
 import '../../../assets/bootstrap-mdb.css';
-import '../login/login.css';
 
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+ 
 
-const Login = () => {
+const Register = () => { 
     const [t,i18n] = useTranslation("global");
     const handleChangeLanguage = (lang) =>{
         i18n.changeLanguage(lang);
@@ -70,4 +70,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register

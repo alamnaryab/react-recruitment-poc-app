@@ -304,7 +304,7 @@ export const  users = [
     },
     {
       "id": 16,
-      "password": "passW@rd16",
+      "password": "passW@rd6",
       "firstName": "Afra",
       "lastName": "Afra",
       "contactInfo": [
