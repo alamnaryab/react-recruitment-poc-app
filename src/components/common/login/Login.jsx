@@ -2,15 +2,18 @@ import '../../../assets/bootstrap.css';
 import '../../../assets/bootstrap-mdb.css';
 import './login.css'
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from 'react';
-import AuthContext from '../../../context/AuthProvider';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {  useState } from 'react';
+import useAuth from '../../../hooks/useAuth';
 
 import { users } from '../../../data/users'; 
 
 const Login = () => { 
     const navigate = useNavigate();
-    const {setAuth} = useContext(AuthContext);
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/home"; //redirect to the page he tried before login
+    //const {setAuth} = useContext(AuthContext);
+    const {setAuth} = useAuth();
 
     const [t,i18n] = useTranslation("global");
     const handleChangeLanguage = (lang) =>{
@@ -36,7 +39,8 @@ const Login = () => {
             console.log('valid');
             setAuth(filteredUser[0]);
             //how can I redirect from here to home component
-            navigate('/home');
+            //console.log(from);
+            navigate(from);
         }else{
             console.log('Invalid');
         }

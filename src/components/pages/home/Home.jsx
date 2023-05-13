@@ -1,4 +1,6 @@
 import {useTranslation } from "react-i18next"
+import Navbar from "../../common/navbar/Navbar";
+import EidtRegister from "../../common/register/EditRegister";
 
 const Home = () => {
     const [t,i18n] = useTranslation("global");
@@ -7,10 +9,10 @@ const Home = () => {
     }
     return (
         <>
-            <div>{t("home.body")}</div>
-            <div className="lang text-center">
-                <button onClick={() => handleChangeLanguage('en') } className="btn btn-sm btn-info my-3"> EN</button>
-                <button onClick={() => handleChangeLanguage('ar') } className="btn btn-sm btn-info my-3"> AR</button>
+            <Navbar />
+            
+            <div className="container">
+                <EidtRegister />
             </div>
         </>
         

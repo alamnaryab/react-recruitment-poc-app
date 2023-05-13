@@ -16,12 +16,22 @@
     "password":"Password",
     "confirm_password":"Confirm password",
     "register":"Register",
-    "have_account":"Already have account? Login Now"
+    "have_account":"Already have account? Login Now",
+    "first_name":"First name",
+    "last_name":"Last name",
+    "education_level":"Education level",
+    "mobile":"Mobile",
+    "work_experience":"Work experience",
+    "technical_knowledge":"Technical knowledge", 
+    "address":"Address"
   },
   "header": {
     "message": "Welcome to recruitment system"
   },
   "home": {
     "body": "lets see what are the contents in this"
-  }
+  },
+  "This field value is required":"This field value is required",
+  "Mobile is required":"Mobile is required",
+  "Email is required":"Email is required"
 }
