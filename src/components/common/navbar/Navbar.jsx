@@ -8,7 +8,7 @@ const Navbar = () => {
         i18n.changeLanguage(lang);
     }
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <div className="container-fluid">
             <Link to="/home" className='navbar-brand'>{t('main.app_name')}</Link>
              

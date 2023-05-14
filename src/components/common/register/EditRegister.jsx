@@ -7,7 +7,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
  
 import { users } from '../../../data/users'; 
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 import AuthContext from '../../../context/AuthProvider';
 import useAuth from '../../../hooks/useAuth';
 
@@ -21,6 +21,12 @@ const EditRegister = () => {
     const handleChangeLanguage = (lang) =>{
         i18n.changeLanguage(lang);
     };
+
+
+    useEffect(() => {
+       const user = users[1];
+    },[]);
+
 
     const formik = useFormik({
 

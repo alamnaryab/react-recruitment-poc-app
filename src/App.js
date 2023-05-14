@@ -20,7 +20,7 @@ function App() {
           <Route path="/home" element={<Home />} /> 
 
           <Route element={<RequireAuth  allowedRoles={['user','admin','super_admin']}   /> }>
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
           </Route>
 
           <Route element={<RequireAuth  allowedRoles={['admin','super_admin']}   /> }>            

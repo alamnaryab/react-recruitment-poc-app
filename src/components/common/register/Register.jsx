@@ -32,7 +32,7 @@ const Register = () => {
         "technicalKnowledge": "",
         "cvAttachment": ""
       },
-
+      enableReinitialze: true,
       //handle submit event of registration form
       onSubmit: (values)=>{
         var newUser = values;
@@ -100,19 +100,26 @@ const Register = () => {
     //dropdown options for education level
     const educationLevels = [
       "Less than high school",
-      "High school diploma",
-      "Associate's degree",
-      "Bachelor's degree",
-      "Master's degree",
+      "High school Diploma",
+      "Associate's Degree",
+      "Bachelor's Degree",
+      "Master's Degree",
       "Doctorate",
     ];
 
     //dropdown options for workexperience
     const workExperienceOptions = [
-      '0-1 years',
-      '1-2 years',
-      '2-5 years',
-      '5-10 years',
+      '0 years',
+      '1 year',
+      '2 years',
+      '3 years',
+      '4 years',
+      '5 years',
+      '6 years',
+      '7 years',
+      '8 years',
+      '9 years',
+      '10 years',
       '10+ years'
     ];
 
@@ -145,7 +152,7 @@ const Register = () => {
                                     <label className="form-label" htmlFor="firstName"> {t('register.first_name')}</label>
                                     <input type="text" 
                                       name = "firstName"
-                                      value={formik.values.first_name} 
+                                      value={formik.values.firstName} 
                                       onChange={formik.handleChange} 
                                       onBlur={formik.handleBlur}
                                       id="firstName" 
@@ -153,13 +160,13 @@ const Register = () => {
                                       {formik.touched.firstName && formik.errors.firstName ? <p className='inputError'>{formik.errors.firstName}</p>:null}
                                 </div>
                                 <div className="col-xs-12 col-md-6 form-outline mb-4">
-                                    <label className="form-label" htmlFor="txt_last_name"> {t('register.last_name')}</label>
+                                    <label className="form-label" htmlFor="txt_lastName"> {t('register.lastName')}</label>
                                     <input type="text" 
                                       name = "lastName"
-                                      value={formik.values.last_name} 
+                                      value={formik.values.lastName} 
                                       onChange={formik.handleChange} 
                                       onBlur={formik.handleBlur}
-                                      id="txt_last_name" 
+                                      id="txt_lastName" 
                                       className="form-control" />
                                       {formik.touched.lastName && formik.errors.lastName ? <p className='inputError'>{formik.errors.lastName}</p>:null}
                                 </div>
