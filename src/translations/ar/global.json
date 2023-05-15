@@ -20,5 +20,10 @@
   "Mobile is required": "رقم الجوال مطلوب",
   "Email is required": "البريد الإلكتروني مطلوب",
   "Excel file exported successfully": "تم تصدير ملف Excel بنجاح",
-  "Welcome": "مرحباً"
+  "Welcome": "مرحباً",
+  "Profile": "حساب تعريفي",
+  "Candidates": "مرشحين",
+  "Access Requests": "طلبات الوصول",
+  "You can filter the data, and Export option will export the filtered data to an excel file": "يمكنك تصفية البيانات ، وسيقوم خيار التصدير بتصدير البيانات التي تمت تصفيتها إلى ملف Excel",
+  "Notifications": "إشعارات"
 }

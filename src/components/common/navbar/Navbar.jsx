@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {useTranslation } from "react-i18next"
+import useAuth from '../../../hooks/useAuth'
 
 const Navbar = () => {
+    const {auth} = useAuth();
     const [t,i18n] = useTranslation("global");
     const handleChangeLanguage = (lang) =>{
         i18n.changeLanguage(lang);
@@ -26,15 +28,18 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/profile" className='nav-link'>profile</Link>
+                    <Link to={{ pathname: `/profile/${auth.id}`}} className='nav-link'>{t('Profile')}</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/candidates" className='nav-link'>Candidates</Link> 
+                    <Link to="/candidates" className='nav-link'>{t('Candidates')}</Link> 
                 </li>
                 <li className="nav-item">
-                    <Link to="/requestaccess" className='nav-link'>Access Requests</Link> 
+                    <Link to="/requestaccess" className='nav-link'>{t('Access Requests')} </Link> 
                 </li>
 
+                <li className="nav-item">
+                    <Link to="/notifications" className='nav-link'>{t('Notifications')} </Link> 
+                </li>
                 <li className="nav-item mr-1">
                     <Link  onClick={() => handleChangeLanguage('en') } className='nav-link bg-primary text-white'>English</Link> 
                 </li>

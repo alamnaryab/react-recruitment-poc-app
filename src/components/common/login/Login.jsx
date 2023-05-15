@@ -13,9 +13,9 @@ import { ToastContainer, toast } from "react-toastify";
 const Login = () => { 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/home"; //redirect to the page he tried before login
     //const {setAuth} = useContext(AuthContext);
     const {setAuth} = useAuth();
+    
 
     const [t,i18n] = useTranslation("global");
     const handleChangeLanguage = (lang) =>{
@@ -40,6 +40,7 @@ const Login = () => {
         if(filteredUser.length === 1){
              
             setAuth(filteredUser[0]); 
+            const from = location.state?.from?.pathname || "/profile/"+filteredUser[0].id; //redirect to the page he tried before login
             navigate(from);
             toast(t("Welcome")+" "+filteredUser[0].firstName+' '+filteredUser[0].lastName);
         }else{

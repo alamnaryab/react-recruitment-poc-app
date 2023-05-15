@@ -107,6 +107,7 @@ const Candidates = () => {
     <>
       <Navbar />
       <div className="container">
+          <div className="alert alert-info text-center">{t('You can filter the data, and Export option will export the filtered data to an excel file')}</div>
           <div className="table-responsive">
               <div className="row">
                 <div className="col-xs-12 col-sm-6">

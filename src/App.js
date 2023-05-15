@@ -11,6 +11,7 @@ import RequestAccess from "./components/pages/requestAccess/RequestAccess";
 import Candidates from "./components/pages/candidates/Candidates";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Notifications from "./components/pages/notifications/Notifications";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           }
         >
           <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/profile/" element={<Profile />} />
+          <Route path="/notifications" element={<Notifications />} />
         </Route>
 
         <Route
