@@ -8,6 +8,8 @@ import useAuth from '../../../hooks/useAuth';
 
 import { users } from '../../../data/users'; 
 
+import { ToastContainer, toast } from "react-toastify";
+
 const Login = () => { 
     const navigate = useNavigate();
     const location = useLocation();
@@ -34,15 +36,15 @@ const Login = () => {
             return user.contactInfo[0] === formData.username && user.password === formData.password;
 
         });
-        console.log(filteredUser);
+         
         if(filteredUser.length === 1){
-            console.log('valid');
-            setAuth(filteredUser[0]);
-            //how can I redirect from here to home component
-            //console.log(from);
+             
+            setAuth(filteredUser[0]); 
             navigate(from);
+            toast(t("Welcome")+" "+filteredUser[0].firstName+' '+filteredUser[0].lastName);
         }else{
-            console.log('Invalid');
+             
+            toast("Invalid username or passwod!");
         }
     }
   return (

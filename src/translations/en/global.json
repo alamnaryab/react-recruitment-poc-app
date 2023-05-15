@@ -1,29 +1,45 @@
 {
-  "main":{
-    "app_name":"Recruitment System",
-    "company_name":"NECMA"
+  "main": {
+    "app_name": "Recruitment System",
+    "company_name": "NECMA"
   },
-  "login":{
-    "login_message":"Please register your account to get shortlisted for current and upcoming vacancies at Company name",
-    "email":"Email",
-    "password":"Password",
-    "login":"Login",
-    "register_now":"Don't have account? Register Now"
+  "login": {
+    "login_message": "Please register your account to get shortlisted for current and upcoming vacancies at Company name",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "register_now": "Don't have account? Register Now"
   },
-  "register":{
-    "register_message":"Please register your account to get shortlisted for current and upcoming vacancies at Company name",
-    "email":"Email",
-    "password":"Password",
-    "confirm_password":"Confirm password",
-    "register":"Register",
-    "have_account":"Already have account? Login Now",
-    "first_name":"First name",
-    "last_name":"Last name",
-    "education_level":"Education level",
-    "mobile":"Mobile",
-    "work_experience":"Work experience",
-    "technical_knowledge":"Technical knowledge", 
-    "address":"Address"
+  "register": {
+    "register_message": "Please register your account to get shortlisted for current and upcoming vacancies at Company name",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "register": "Register",
+    "have_account": "Already have account? Login Now",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "education_level": "Education level",
+    "mobile": "Mobile",
+    "work_experience": "Work experience",
+    "technical_knowledge": "Technical knowledge",
+    "address": "Address"
+  },
+  "profile": {
+    "register_message": "Please register your account to get shortlisted for current and upcoming vacancies at Company name",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "register": "Register",
+    "have_account": "Already have account? Login Now",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "education_level": "Education level",
+    "mobile": "Mobile",
+    "work_experience": "Work experience",
+    "technical_knowledge": "Technical knowledge",
+    "address": "Address",
+    "Update_account": "Update account"
   },
   "header": {
     "message": "Welcome to recruitment system"
@@ -31,7 +47,9 @@
   "home": {
     "body": "lets see what are the contents in this"
   },
-  "This field value is required":"This field value is required",
-  "Mobile is required":"Mobile is required",
-  "Email is required":"Email is required"
+  "This field value is required": "This field value is required",
+  "Mobile is required": "Mobile is required",
+  "Email is required": "Email is required",
+  "Excel file exported successfully": "Excel file exported successfully",
+  "Welcome": "Welcome"
 }

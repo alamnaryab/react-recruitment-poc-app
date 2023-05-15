@@ -1,22 +1,24 @@
 {
-  "main":{
-      "app_name":"نظام التوظيف",
-      "company_name":"NECMA"
-      },
-  "login":{
-      "login_message":"يرجى تسجيل حسابك للحصول على فرصة الانضمام إلى الوظائف الحالية والمستقبلية في شركة نكما",
-      "email":"البريد الإلكتروني",
-      "password":"كلمة المرور",
-      "login":"تسجيل الدخول",
-  "register_now":"ليس لديك حساب؟ سجل الآن"
-      },
-      "header": {
-      "message": "مرحبًا بك في نظام التوظيف"
-      },
+  "main": {
+    "app_name": "نظام التوظيف",
+    "company_name": "NECMA"
+  },
+  "login": {
+    "login_message": "يرجى تسجيل حسابك للحصول على فرصة الانضمام إلى الوظائف الحالية والمستقبلية في شركة نكما",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "login": "تسجيل الدخول",
+    "register_now": "ليس لديك حساب؟ سجل الآن"
+  },
+  "header": {
+    "message": "مرحبًا بك في نظام التوظيف"
+  },
   "home": {
-      "body": "لنرى ما هي المحتويات الموجودة في هذا الموقع"
-      },
-  "This field value is required":"هذه الحقل مطلوب",
-  "Mobile is required":"رقم الجوال مطلوب",
-  "Email is required":"البريد الإلكتروني مطلوب"
+    "body": "لنرى ما هي المحتويات الموجودة في هذا الموقع"
+  },
+  "This field value is required": "هذه الحقل مطلوب",
+  "Mobile is required": "رقم الجوال مطلوب",
+  "Email is required": "البريد الإلكتروني مطلوب",
+  "Excel file exported successfully": "تم تصدير ملف Excel بنجاح",
+  "Welcome": "مرحباً"
 }

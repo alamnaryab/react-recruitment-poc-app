@@ -8,11 +8,17 @@ import * as Yup from 'yup';
  
 import { users } from '../../../data/users'; 
 import { useEffect, useState } from 'react';
+import Navbar from '../navbar/Navbar';
+import { toast } from 'react-toastify';
+
+import useAuth from '../../../hooks/useAuth';
 
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const {auth} = useAuth();
+  let { id = -1} = useParams();
+  
   const [dbValues, setDbValues] = useState({  
     "id":"",
     "firstName":"",
@@ -25,15 +31,17 @@ const Profile = () => {
     "technicalKnowledge": "" 
   });
 
+   
+
   const [t, i18n] = useTranslation("global");
   const handleChangeLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
 
   // fetch user data by ID and set state
-  useEffect(() => {
+  useEffect(() => { 
+    id = id>-1?id:auth.id; 
     const dbUser = users.find(user => user.id.toString() === id);
-    console.log(dbUser);
     if (dbUser) {
         setDbValues ({  
           "id":dbUser.id,
@@ -51,36 +59,27 @@ const Profile = () => {
  
 
   const formik = useFormik({
-    //values to be shown on form load (default values)
-    initialValues: dbValues ,
-    enableReinitialze: true,
+      //values to be shown on form load (default values)
+      initialValues: dbValues ,
+      enableReinitialze: true,
       //handle submit event of registration form
-      onSubmit: (values)=>{
-         console.log(values);
-        // var newUser = values;
-        // console.log(newUser);
-         
+      onSubmit: (theUser)=>{ 
+        var updatedUser = theUser;
+        const index = users.findIndex((user) => user.id === updatedUser.id);
 
-        // //move mobile and email properties inside contactInfo
-        // newUser.contactInfo= [
-        //   newUser.email,
-        //   newUser.mobile
-        // ];
-        // //remove these properties as these are added in contactInfo property 
-        // delete newUser.email;
-        // delete newUser.mobile;
+        updatedUser.contactInfo= [
+          updatedUser.email,
+          updatedUser.mobile
+        ];
 
-        // //
-        // newUser.technicalKnowledge =  values.technicalKnowledge.split(",").map(item => item.trim());
+        updatedUser.technicalKnowledge =  theUser.technicalKnowledge.split(",").map(item => item.trim());
+        //remove these properties as these are added in contactInfo property 
+        // delete updatedUser?.email;
+        // delete updatedUser?.mobile;
 
-        // let index = users.findIndex(user => user.id === newUser.id);
-        // if (index !== -1) {
-        //   users[index] = newUser;
-        // } 
-
-        // //redirect to login page
-        // navigate('/');
-         
+        var newObj = {...users[index],...updatedUser};
+        users[index] = newObj;
+        toast.success("User profile updated successfully");
       },
 
       //define validation rules for form fields
@@ -92,7 +91,8 @@ const Profile = () => {
                       return new Promise(resolve => {
                         setTimeout(() => {
                           const isEmailDuplicate = users.some(user => user.contactInfo[0].toLowerCase() === value.toLowerCase()
-                                                                   && user.contactInfo[0].toLowerCase() !== dbValues?.email.toLowerCase());
+                                                                   && user.contactInfo[0].toLowerCase() !== value.toLowerCase()
+                                                                   );
                           resolve(!isEmailDuplicate);
                         }, 1000); // simulate server latency
                       });
@@ -108,12 +108,7 @@ const Profile = () => {
         // .test('fileType', t('Only pdf and jpg files are allowed'), (value) => {
         //   return value && ['application/pdf', 'image/jpeg'].includes(value.type);
         // }),
-        "password": Yup.string()
-          .min(8, t('Password must be at least 8 characters'))
-          .required(t('Password is required')),
-        "confirm_password": Yup.string()
-          .oneOf([Yup.ref('password'), null], t('Passwords must match'))
-          .required(t('Confirm Password is required')),
+        
       })//end validationSchema
 
     });//end formik
@@ -151,12 +146,15 @@ const Profile = () => {
 
   
   return (
+    <>
+    
+    <Navbar />
     <div className="container">
       <form onSubmit={formik.handleSubmit}>
         <div className="row">
 
-        <div className="col-xs-12 col-md-6 form-outline mb-4">
-              <label className="form-label" htmlFor="id"> {t('register.id')}</label>
+        <div className="col-xs-12 col-md-6 form-outline mb-4 d-none">
+              <label className="form-label" htmlFor="id"> {t('profile.id')}</label>
               <input type="text" 
                 name = "id"
                 value={formik.values.id} 
@@ -168,7 +166,7 @@ const Profile = () => {
           </div>
 
           <div className="col-xs-12 col-md-6 form-outline mb-4">
-              <label className="form-label" htmlFor="firstName"> {t('register.first_name')}</label>
+              <label className="form-label" htmlFor="firstName"> {t('profile.first_name')}</label>
               <input type="text" 
                 name = "firstName"
                 value={formik.values.firstName} 
@@ -179,7 +177,7 @@ const Profile = () => {
                 {formik.touched.firstName && formik.errors.firstName ? <p className='inputError'>{formik.errors.firstName}</p>:null}
           </div>
           <div className="col-xs-12 col-md-6 form-outline mb-4">
-              <label className="form-label" htmlFor="txt_lastName"> {t('register.lastName')}</label>
+              <label className="form-label" htmlFor="txt_lastName"> {t('profile.last_name')}</label>
               <input type="text" 
                 name = "lastName"
                 value={formik.values.lastName} 
@@ -190,7 +188,7 @@ const Profile = () => {
                 {formik.touched.lastName && formik.errors.lastName ? <p className='inputError'>{formik.errors.lastName}</p>:null}
           </div>
           <div className="col-xs-12 col-md-6 form-outline mb-4">
-              <label className="form-label" htmlFor="txt_email"> {t('register.email')}</label>
+              <label className="form-label" htmlFor="txt_email"> {t('profile.email')}</label>
               <input name="email" 
                   type="email" 
                   value={formik.values.email} 
@@ -201,7 +199,7 @@ const Profile = () => {
                   {formik.touched.email && formik.errors.email ? <p className='inputError'>{formik.errors.email}</p>:null}
           </div>
           <div className="col-xs-12 col-md-6 form-outline mb-4">
-              <label className="form-label" htmlFor="txt_mobile"> {t('register.mobile')}</label>
+              <label className="form-label" htmlFor="txt_mobile"> {t('profile.mobile')}</label>
               <input name="mobile" 
                 type="text" 
                 value={formik.values.mobile} 
@@ -210,12 +208,12 @@ const Profile = () => {
                 {formik.touched.mobile && formik.errors.mobile ? <p className='inputError'>{formik.errors.mobile}</p>:null}
           </div>
           <div className="col-xs-12 col-lg-12 form-outline mb-4">
-              <label className="form-label" htmlFor="txt_address"> {t('register.address')}</label>
+              <label className="form-label" htmlFor="txt_address"> {t('profile.address')}</label>
               <input name="address"  type="text" value={formik.values.address} onChange={formik.handleChange} id="txt_address" className="form-control" />
               {formik.touched.address && formik.errors.address ? <p className='inputError'>{formik.errors.address}</p>:null}
           </div>
           <div className="col-xs-12 col-md-6 form-outline mb-4">
-              <label className="form-label" htmlFor="txt_education_level"> {t('register.education_level')}</label>
+              <label className="form-label" htmlFor="txt_education_level"> {t('profile.education_level')}</label>
               <select name="educationLevel" value={formik.values.educationLevel} onChange={formik.handleChange} id="txt_education_level" className="form-control browser-default custom-select">
                 <option >Select an education level</option>
                 {educationLevels.map((level) => (
@@ -227,7 +225,7 @@ const Profile = () => {
               {formik.touched.educationLevel && formik.errors.educationLevel ? <p className='inputError'>{formik.errors.educationLevel}</p>:null}
           </div>
           <div className="col-xs-12 col-md-6 form-outline mb-4">
-              <label className="form-label" htmlFor="txt_work_experience"> {t('register.work_experience')}</label>
+              <label className="form-label" htmlFor="txt_work_experience"> {t('profile.work_experience')}</label>
               <select name="workExperience" value={formik.values.workExperience} onChange={formik.handleChange} id="txt_work_experience" className="form-control browser-default custom-select">
                 <option value="">Select a work experience range</option>
                 {workExperienceOptions.map(option => (
@@ -237,7 +235,7 @@ const Profile = () => {
               {formik.touched.workExperience && formik.errors.workExperience ? <p className='inputError'>{formik.errors.workExperience}</p>:null}
           </div>
           <div className="col-xs-12 col-lg-12 form-outline mb-4">
-              <label className="form-label" htmlFor="txt_technical_knowledge"> {t('register.technical_knowledge')}</label>
+              <label className="form-label" htmlFor="txt_technical_knowledge"> {t('profile.technical_knowledge')}</label>
               <textarea name="technicalKnowledge" value={formik.values.technicalKnowledge} onChange={formik.handleChange} id="txt_technical_knowledge" className="form-control"></textarea>
               {formik.touched.technicalKnowledge && formik.errors.technicalKnowledge ? <p className='inputError'>{formik.errors.technicalKnowledge}</p>:null}
           </div>
@@ -245,13 +243,13 @@ const Profile = () => {
 
           </div>
           {/* .row */}
-          <button type="submit" className="btn btn-primary btn-block mb-4">
-              {t('register.Update_account')}
+          <button type="submit"  className="btn btn-primary btn-block mb-4">
+              {t('profile.Update_account')}
           </button>
     
   </form>
     </div>
-        
+    </>
   )
 }
 

@@ -26,20 +26,20 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/home" className='nav-link'>profile</Link>
+                    <Link to="/profile" className='nav-link'>profile</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/home" className='nav-link'>Candidates</Link> 
+                    <Link to="/candidates" className='nav-link'>Candidates</Link> 
                 </li>
                 <li className="nav-item">
-                    <Link to="/home" className='nav-link'>Access Requests</Link> 
+                    <Link to="/requestaccess" className='nav-link'>Access Requests</Link> 
                 </li>
 
                 <li className="nav-item mr-1">
                     <Link  onClick={() => handleChangeLanguage('en') } className='nav-link bg-primary text-white'>English</Link> 
                 </li>
                 <li className="nav-item">
-                    <Link  onClick={() => handleChangeLanguage('ar') } className='nav-link bg-primary text-white'>Arabic</Link> 
+                    <Link  onClick={() => handleChangeLanguage('ar') } className='nav-link bg-primary text-white'>عربي</Link> 
                 </li>
                 
             </ul>
