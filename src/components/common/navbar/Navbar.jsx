@@ -10,9 +10,10 @@ const Navbar = () => {
         i18n.changeLanguage(lang);
     }
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div className="container-fluid">
-            <Link to="/home" className='navbar-brand'>{t('main.app_name')}</Link>
+            <Link to={{ pathname: `/profile/${auth.id}`}} className='navbar-brand'>{t('main.app_name')}</Link>
              
             <button
             className="navbar-toggler"
@@ -34,23 +35,25 @@ const Navbar = () => {
                     <Link to="/candidates" className='nav-link'>{t('Candidates')}</Link> 
                 </li>
                 <li className="nav-item">
-                    <Link to="/requestaccess" className='nav-link'>{t('Access Requests')} </Link> 
-                </li>
-
-                <li className="nav-item">
                     <Link to="/notifications" className='nav-link'>{t('Notifications')} </Link> 
                 </li>
                 <li className="nav-item mr-1">
-                    <Link  onClick={() => handleChangeLanguage('en') } className='nav-link bg-primary text-white'>English</Link> 
+                    <Link  onClick={() => handleChangeLanguage('en') } className='nav-link bg-default text-white'>English</Link> 
                 </li>
                 <li className="nav-item">
-                    <Link  onClick={() => handleChangeLanguage('ar') } className='nav-link bg-primary text-white'>عربي</Link> 
+                    <Link  onClick={() => handleChangeLanguage('ar') } className='nav-link bg-default text-white'>عربي</Link> 
                 </li>
                 
             </ul>
             </div>
         </div>
+        <div className='text-center white'>
+            Logged in user <strong>{auth.firstName} </strong> 
+             has roles: {auth.role.map((r)=> <span className='badge badge-info'>{r}</span> )}
+        </div>
         </nav>
+        
+        </>
   )
 }
 

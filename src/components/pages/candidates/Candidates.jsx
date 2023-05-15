@@ -71,12 +71,14 @@ const Candidates = () => {
     columns.push({
       name: 'Request Access', 
       selector: row => (
-              !row?.role?.includes('super_admin')
-              ?
-                row.requst_access
-                ? <div><button className="btn btn-sm btn-success p-1" onClick={()=>handleAccessApprove(row.id)}>Approve</button> <button onClick={()=>handleAccessReject(row.id)} className="btn btn-sm btn-danger p-1">Reject</button></div>
-                :<button onClick={()=> handleAccessRequest(row.id)}  className="btn btn-sm btn-warning btn-sm p-1">Request access</button>
-              :<div>sa</div>
+                !row?.role?.includes('super_admin')
+                ?
+                  row.requst_access
+                  ? auth.role.includes("super_admin")
+                    ?<div><button className="btn btn-sm btn-success p-1" onClick={()=>handleAccessApprove(row.id)}>Approve</button> <button onClick={()=>handleAccessReject(row.id)} className="btn btn-sm btn-danger p-1">Reject</button></div>
+                    :<div>request pending</div>
+                  :<button onClick={()=> handleAccessRequest(row.id)}  className="btn btn-sm btn-warning btn-sm p-1">Request access</button>
+                :<div>sa</div>
               ),
     });
   }
@@ -155,27 +157,38 @@ const Candidates = () => {
     <>
       <Navbar />
       <div className="container">
-          <div className="alert alert-info text-center">{t('You can filter the data, and Export option will export the filtered data to an excel file')}</div>
-          <div className="table-responsive">
-              <div className="row">
-                <div className="col-xs-12 col-sm-6">
-               
-                  <button className="btn btn-success" onClick={handleExport}>Export data</button>
-                </div>
-                <div className="col-xs-12 col-sm-6">
-                  <div className="text-right">
-                    <input  ref={inputRef} type="text" className="form-control d-inline" onChange={handleFilter} placeholder="Filter data" style={{ width:'150px' }} />
-                  </div>
-                </div>
-              </div>
-              
-              <DataTable
-                columns={columns}
-                data={records}
-                pagination
-                dense
-              />
+        <div className="card mb-3">
+          <div className="card-body py-2">
+            <h3 className='text-info m-0 p-0'>{t('Candidates')}</h3>
+          </div>
+        </div>
+            <div className=" alert alert-info text-center">{t('You can filter the data, and Export option will export the filtered data to an excel file')}</div>
 
+        <div className="card mb-3">
+            <div className="card-body">
+            
+              <div className="table-responsive">
+                  <div className="row">
+                    <div className="col-xs-12 col-sm-6">
+                  
+                      <button className="btn btn-success" onClick={handleExport}>Export data</button>
+                    </div>
+                    <div className="col-xs-12 col-sm-6">
+                      <div className="text-right">
+                        <input  ref={inputRef} type="text" className="form-control d-inline" onChange={handleFilter} placeholder="Filter data" style={{ width:'150px' }} />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <DataTable
+                    columns={columns}
+                    data={records}
+                    pagination
+                    dense
+                  />
+
+              </div>
+            </div>
           </div>
       </div>
     </>

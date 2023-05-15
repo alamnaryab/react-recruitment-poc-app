@@ -16,9 +16,18 @@ const Notifications = () => {
     <>
         <Navbar />
         <div className="container">
+        <div className="card mb-3">
+          <div className="card-body py-2">
+            <h3 className='text-info m-0 p-0'>{t('Notifications')}</h3>
+          </div>
+        </div>
+        <div className="card mb-3">
+        <div className="card-body">
             <h2>This is simulation of alerts on new data</h2>
             <p>Although this point was not much clear but I will assume when new candidate registers, if admins or super admins are logged in they will get notification that a new candidate account is registered</p>
             <button className='btn btn-success' onClick={handleNotification}>Click to simulate notification</button>
+        </div>
+        </div>
         </div>
     </>
   )

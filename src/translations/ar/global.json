@@ -10,6 +10,38 @@
     "login": "تسجيل الدخول",
     "register_now": "ليس لديك حساب؟ سجل الآن"
   },
+  "register": {
+    "register_message": "يرجى التسجيل في حسابك للحصول على قائمة مختصرة للوظائف الحالية والمقبلة في اسم الشركة",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة السر",
+    "confirm_password": "تأكيد كلمة المرور",
+    "register": "تسجيل",
+    "have_account": "هل لديك حساب؟ تسجيل الدخول الآن",
+    "first_name": "الاسم الأول",
+    "last_name": "اسم العائلة",
+    "education_level": "مستوى التعليم",
+    "mobile": "الجوال",
+    "work_experience": "خبرة العمل",
+    "technical_knowledge": "المعرفة التقنية",
+    "address": "العنوان",
+    "cvAttachment":"مرفق"
+  },
+  "profile": {
+    "register_message": "يرجى التسجيل في حسابك للحصول على قائمة مختصرة للوظائف الحالية والمقبلة في اسم الشركة",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة السر",
+    "confirm_password": "تأكيد كلمة المرور",
+    "register": "تسجيل",
+    "have_account": "هل لديك حساب؟ تسجيل الدخول الآن",
+    "first_name": "الاسم الأول",
+    "last_name": "اسم العائلة",
+    "education_level": "مستوى التعليم",
+    "mobile": "الجوال",
+    "work_experience": "خبرة العمل",
+    "technical_knowledge": "المعرفة التقنية",
+    "address": "العنوان",
+    "Update_account": "تحديث الحساب"
+  },
   "header": {
     "message": "مرحبًا بك في نظام التوظيف"
   },
@@ -25,5 +57,9 @@
   "Candidates": "مرشحين",
   "Access Requests": "طلبات الوصول",
   "You can filter the data, and Export option will export the filtered data to an excel file": "يمكنك تصفية البيانات ، وسيقوم خيار التصدير بتصدير البيانات التي تمت تصفيتها إلى ملف Excel",
-  "Notifications": "إشعارات"
+  "Notifications": "إشعارات",
+  "User profile":"ملف تعريفي للمستخدم",
+  "Page not found":"الصفحة غير موجودة",
+  "Login":"تسجيل الدخول",
+  "Register":"يسجل"
 }

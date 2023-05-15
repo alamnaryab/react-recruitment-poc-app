@@ -11,6 +11,7 @@ export const users = [
     technicalKnowledge: ["JavaScript", "HTML", "CSS"],
     cvAttachment: "https://example.com/cv.pdf",
     role: ["user"],
+    requst_access:true
   },
   {
     id: 2,

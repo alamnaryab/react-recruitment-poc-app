@@ -56,5 +56,10 @@
   "Candidates": "Candidates",
   "Access Requests": "Access Requests",
   "You can filter the data, and Export option will export the filtered data to an excel file": "You can filter the data, and Export option will export the filtered data to an excel file",
-  "Notifications": "Notifications"
+  "Notifications": "Notifications",
+  "User profile":"User profile",
+  "Page not found":"Page not found",
+  "Login":"Login",
+  "Register":"Register"
+
 }

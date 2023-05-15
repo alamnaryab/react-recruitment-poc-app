@@ -142,6 +142,10 @@ const Register = () => {
                 <div className="col-lg-7 mb-5 mb-lg-0 position-relative">
                     <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
                     <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
+                    
+                    <div class="nav nav-tabs md-tabs aqua-gradient" id="myTabMD2" role="tablist">        
+                        <h3 class="text-white mx-auto">{t('Register')}</h3>                            
+                    </div>
                     <div className="card bg-glass">
                     <div className="card-body px-4 py-5 px-md-5">
                         <form onSubmit={formik.handleSubmit}>
@@ -160,7 +164,7 @@ const Register = () => {
                                       {formik.touched.firstName && formik.errors.firstName ? <p className='inputError'>{formik.errors.firstName}</p>:null}
                                 </div>
                                 <div className="col-xs-12 col-md-6 form-outline mb-4">
-                                    <label className="form-label" htmlFor="txt_lastName"> {t('register.lastName')}</label>
+                                    <label className="form-label" htmlFor="txt_lastName"> {t('register.last_name')}</label>
                                     <input type="text" 
                                       name = "lastName"
                                       value={formik.values.lastName} 

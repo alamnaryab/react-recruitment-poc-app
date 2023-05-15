@@ -7,12 +7,12 @@ import Home from "./components/pages/home/Home";
 import { Routes, Route } from "react-router-dom";
 import RequireAuth from "./components/common/requireAuth/RequireAuth";
 import Profile from "./components/common/profile/Profile";
-import RequestAccess from "./components/pages/requestAccess/RequestAccess";
 import Candidates from "./components/pages/candidates/Candidates";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Notifications from "./components/pages/notifications/Notifications";
 import Unauthorized from "./components/common/unauthorized/Unauthorized";
+import NotFound from "./components/common/notFound/NotFound";
 
 function App() {
   return (
@@ -36,13 +36,13 @@ function App() {
         <Route
           element={<RequireAuth allowedRoles={["admin", "super_admin"]} />}
         >
-          <Route path="/requestaccess" element={<RequestAccess />} />
           <Route path="/candidates" element={<Candidates />} />
         </Route>
 
         <Route element={<RequireAuth allowedRoles={["super_admin"]} />}>
           <Route path="/roles" element={<Register />} />
         </Route>
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );
