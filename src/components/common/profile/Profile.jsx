@@ -72,10 +72,11 @@ const Profile = () => {
           updatedUser.mobile
         ];
 
-        updatedUser.technicalKnowledge =  theUser.technicalKnowledge.split(",").map(item => item.trim());
+        updatedUser.technicalKnowledge =  theUser?.technicalKnowledge?.split(",").map(item => item.trim());
         //remove these properties as these are added in contactInfo property 
         // delete updatedUser?.email;
         // delete updatedUser?.mobile;
+        
 
         var newObj = {...users[index],...updatedUser};
         users[index] = newObj;

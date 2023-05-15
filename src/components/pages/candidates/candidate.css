@@ -1,4 +1,5 @@
-.keUJqf div:first-child {
+.keUJqf div:first-child ,
+.ghLWkf div:first-child{
     white-space: unset!important;
     overflow: auto!important; 
 }

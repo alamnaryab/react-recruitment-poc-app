@@ -40,7 +40,10 @@ const Login = () => {
         if(filteredUser.length === 1){
              
             setAuth(filteredUser[0]); 
-            const from = location.state?.from?.pathname || "/profile/"+filteredUser[0].id; //redirect to the page he tried before login
+            let from = location.state?.from?.pathname || "/profile/"+filteredUser[0].id; //redirect to the page he tried before login
+            if(!(filteredUser[0]?.role?.includes("super_admin") || filteredUser[0]?.role?.includes("admin"))){
+                from = "/profile/"+filteredUser[0].id;
+            }
             navigate(from);
             toast(t("Welcome")+" "+filteredUser[0].firstName+' '+filteredUser[0].lastName);
         }else{
@@ -62,6 +65,19 @@ const Login = () => {
                     <p className="mb-4 opacity-70" style={{ color: "hsl(218, 81%, 85%)" }}>
                     {t('login.login_message')}
                     </p>
+
+                    <div className="grey lighten-1 p-3 rounded">
+                        <h3 className="p-0 m-0 ">Test users</h3>
+                        <p>Password is <strong className='yellow text-dark'>123456</strong> for all</p>
+                        <pre>
+                            {users.map((user) => 
+                                <>
+                                    {user?.contactInfo[0]}  <small className='yellow text-dark'> {user?.role?.join(',')}</small>{'\n'}
+                                </>
+                                )}
+                        </pre>
+                    </div>
+
                 </div>
                 <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
                     <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>

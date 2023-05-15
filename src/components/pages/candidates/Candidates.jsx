@@ -6,17 +6,23 @@ import './candidate.css'
 import { toast } from 'react-toastify';
 
 import DataTable from 'react-data-table-component';
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import * as XLSX from "xlsx";
+import useAuth from "../../../hooks/useAuth";
  
 
 const Candidates = () => {
+  const inputRef = useRef();
   const [t,i18n] = useTranslation("global");
   const handleChangeLanguage = (lang) =>{
       i18n.changeLanguage(lang);
   }
+
+  const [textValue, setTextValue] = useState('');
+
+  const {auth} = useAuth();
  
 
   const columns = [
@@ -59,12 +65,43 @@ const Candidates = () => {
       name: 'Action', 
       selector: row => (<Link to={{ pathname: `/profile/${row.id}`}}  className='nav-link'>View</Link>),
     },  
-
 ];
+
+  if(auth.role.includes("super_admin") || auth.role.includes("admin")){
+    columns.push({
+      name: 'Request Access', 
+      selector: row => (
+              !row?.role?.includes('super_admin')
+              ?
+                row.requst_access
+                ? <div><button className="btn btn-sm btn-success p-1" onClick={()=>handleAccessApprove(row.id)}>Approve</button> <button onClick={()=>handleAccessReject(row.id)} className="btn btn-sm btn-danger p-1">Reject</button></div>
+                :<button onClick={()=> handleAccessRequest(row.id)}  className="btn btn-sm btn-warning btn-sm p-1">Request access</button>
+              :<div>sa</div>
+              ),
+    });
+  }
+
+   
+  const handleAccessApprove = (user_id) => {
+    const index = users.findIndex((user) => user.id === user_id);
+    users[index].role.push('super_admin');
+    users[index].requst_access = false;
+    setTextValue(textValue + ' ');
+    toast.success("Access granted");
+  }
+
+  const handleAccessReject = (user_id) => {
+    const index = users.findIndex((user) => user.id === user_id);
+    users[index].requst_access = false;
+    setTextValue(textValue + ' ');
+    toast.success("Access denied");
+  }
+  
 
   const [records,setRecords] = useState(users);
   const handleFilter = (e)=>{
-    const searchTerm = e.target.value.toLowerCase();
+    setTextValue(e.target.value);
+    const searchTerm = e.target.value.toLowerCase().trim();
     const filteredData = users.filter(row =>{
         return row?.firstName.toLowerCase().includes(searchTerm)
               || row?.lastName.toLowerCase().includes(searchTerm)
@@ -79,6 +116,15 @@ const Candidates = () => {
     });
     setRecords(filteredData);
   }
+
+  const handleAccessRequest = (user_id) => {
+    const index = users.findIndex((user) => user.id === user_id);
+    users[index].requst_access = true;
+    setTextValue(textValue + ' ');
+     
+  }
+
+   
 
   const handleExport=()=>{
     var wb = XLSX.utils.book_new();
@@ -103,6 +149,8 @@ const Candidates = () => {
     toast.success(t("Excel file exported successfully"));
   }
 
+  
+
   return (
     <>
       <Navbar />
@@ -116,7 +164,7 @@ const Candidates = () => {
                 </div>
                 <div className="col-xs-12 col-sm-6">
                   <div className="text-right">
-                    <input type="text" className="form-control d-inline" onChange={handleFilter} placeholder="Filter data" style={{ width:'150px' }} />
+                    <input  ref={inputRef} type="text" className="form-control d-inline" onChange={handleFilter} placeholder="Filter data" style={{ width:'150px' }} />
                   </div>
                 </div>
               </div>

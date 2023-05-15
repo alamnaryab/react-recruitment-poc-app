@@ -12,6 +12,7 @@ import Candidates from "./components/pages/candidates/Candidates";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Notifications from "./components/pages/notifications/Notifications";
+import Unauthorized from "./components/common/unauthorized/Unauthorized";
 
 function App() {
   return (
@@ -21,13 +22,14 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="/profile/:id" element={<Profile />} />
 
         <Route
           element={
             <RequireAuth allowedRoles={["user", "admin", "super_admin"]} />
           }
         >
-          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/notifications" element={<Notifications />} />
         </Route>
 
